@@ -1,0 +1,14 @@
+CRUD
+
+
+baseaddress/controller/action
+http://localhost/Employee/Create
+
+http://localhost:4266/Home/Index
+
+System.InvalidOperationException: 'Unable to find the required services. Please add all the required services by calling 'IServiceCollection.AddControllers' inside the call to 'ConfigureServices(...)' in the application startup code.'
+
+SOLID
+
+Repo-> Products,Category,User,Order,Invoice,Cart
+ IRepo<T>=>add(T t), GetAll(),Get(int id)

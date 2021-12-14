@@ -1,0 +1,19 @@
+﻿<h1>
+
+    Show Number 
+</h1>
+<div>
+    <h1>ViewData</h1>
+     @foreach (var item in ((IEnumerable<int>)ViewData["nums"])) {
+            <li>@item</li>
+    }
+</div>
+
+<div>
+    <h1>ViewBag</h1>
+    @foreach (var item in ViewBag.nums)
+    {
+        <li>@item</li>
+    }
+</div>
+@await Component.InvokeAsync("Sample")

@@ -1,0 +1,26 @@
+﻿@model IEnumerable<AppFromStart.Models.Student>
+@*@inject AppFromStart.Services.IRepo<AppFromStart.Models.Student> repo*@
+@{
+    ViewData["Title"] = "All Students";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.ActionLink("Create a new student", "Create", "Student")
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>@item.Id</li>
+        <li>@item.Name</li>
+        <li>@item.Status</li>
+        <hr />
+        { 
+            Html.RenderPartial("Greet", item);
+        }
+    }
+</ul>
+
+@*@foreach (var item in repo.GetAll())
+    {
+        <li>@item.Id</li>
+        <li>@item.Name</li>
+        <hr />
+    }*@

@@ -1,0 +1,14 @@
+﻿@model AppFromStart.Models.Student
+@{
+    ViewData["Title"] = "Student in Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    Student Id : @Model.Id
+    <br />
+    Student Name : @Model.Name
+
+    @Html.Partial("Greet", Model);
+    <hr />
+    @await Component.InvokeAsync("Sample")
+</div>
