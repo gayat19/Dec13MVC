@@ -51,18 +51,53 @@ namespace AppFromStart.Controllers
         //}
         public IActionResult Create(Student student)
         {
-            //Student student = new Student();
-            //student.Id = Convert.ToInt32(form["Id"]);
-            //student.Name = form["Name"].ToString();
-            _repo.Add(student);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _repo.Add(student);
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        public IActionResult Edit(int Id)
+        {
+            Student student = _repo.Get(Id);
+            return View(student);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int Id,Student student)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_repo.Update(student) != null)
+                    return RedirectToAction("Index");
+            }
+            //else
+            //    ModelState.ClearValidationState(nameof(Student));
+            ModelState.AddModelError("All Errors", "Details are not complete");
+            return View(student);
+        }
+        public IActionResult Delete(int Id)
+        {
+            Student student = _repo.Get(Id);
+            return View(student);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int Id, Student student)
+        {
+            if (_repo.Delete(Id) != null )
+                return RedirectToAction("Index");
+            else
+                return View(student);
         }
         //public string ShowNumber()
         //{
         //    return "The number is     "+_dummy.GetNumber().ToString();
         //}
         // [ActionName("ShowNumber")]
-       // [Route("")]
+        // [Route("")]
         //[Route("User")]
         //[Route("User/MyMethod")]
         //[Route("User/MyMethod/{name?}")]

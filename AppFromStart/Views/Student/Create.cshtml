@@ -12,7 +12,7 @@
     <title>Create</title>
     <style>
         .myStyle {
-            color: red;
+            background-color: yellow;
         }
     </style>
 </head>
@@ -24,14 +24,17 @@
         <div class="col-md-4">
             @using (Html.BeginForm("Create", "Student", FormMethod.Post))
             {
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                
                 <div class="form-group">
                     @Html.LabelFor(m => m.Id, htmlAttributes: new { @class = "myStyle" })
                     @Html.EditorFor(m => m.Id)
+                    @Html.ValidationMessageFor(m=>m.Id)
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.Name)
-                    @Html.EditorFor(m => m.Name)
+                    @*@Html.EditorFor(m => m.Name,new { @id = "sname" })*@
+                    <input asp-for="Name" id="sname"  />
+                    @Html.ValidationMessageFor(m => m.Name)
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(m => m.Status)
@@ -41,6 +44,22 @@
                 <div>
                     <input type="submit" value="Create" />ht
                 </div>
+                <script>
+                    //function checkName() {
+                    //    var stuName = document.getElementById("sname")
+                    //    if (stuName.value == "") {
+                    //        /*stuName.style.backgroundColor = "red";*/
+                    //        stuName.classList.add("myStyle");
+                    //    }
+                    //}
+                    $(document).ready(function () {
+                        $("#sname").blur(function () {
+                            if ($(this).val() == "") {
+                                $(this).addClass("myStyle");
+                                }
+                            });
+                    })
+                </script>
             }
 
         </div>

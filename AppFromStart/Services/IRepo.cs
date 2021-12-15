@@ -10,5 +10,9 @@ namespace AppFromStart.Services
         ICollection<T> GetAll();
         bool Add(T t);
         T Get(int id);
+
+        T Update(T t);
+
+        T Delete(int id);
     }
 }

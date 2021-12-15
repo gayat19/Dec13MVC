@@ -12,3 +12,9 @@ SOLID
 
 Repo-> Products,Category,User,Order,Invoice,Cart
  IRepo<T>=>add(T t), GetAll(),Get(int id)
+
+scaffold-dbcontext -provider Microsoft.EntityFrameworkCore.SqlServer -connection "server=DESKTOP-1C1EU5R\SQLSERVER2019G3;user id=sa;password=P@ssw0rd;Initial catalog=dbSchoolCF15Dec21" -OutputDir Models -Context SchoolContext
+
+dotent ef dbcontext scaffold Microsoft.EntityFrameworkCore.SqlServer "server=DESKTOP-1C1EU5R\SQLSERVER2019G3;user id=sa;password=P@ssw0rd;Initial catalog=dbSchoolCF15Dec21"
+
+return Task.FromResult<IViewComponentResult>(View("SelectCity"));

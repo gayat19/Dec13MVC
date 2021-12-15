@@ -1,10 +1,11 @@
 ﻿@model IEnumerable<AppFromStart.Models.Student>
 @*@inject AppFromStart.Services.IRepo<AppFromStart.Models.Student> repo*@
+
 @{
     ViewData["Title"] = "All Students";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@Html.ActionLink("Create a new student", "Create", "Student")
+@Html.ActionLink("Create a new student", "Create", "Student",htmlAttributes:new { @class="link"})
 <ul>
     @foreach (var item in Model)
     {
@@ -12,9 +13,12 @@
         <li>@item.Name</li>
         <li>@item.Status</li>
         <hr />
-        { 
-            Html.RenderPartial("Greet", item);
-        }
+   
+      Html.RenderPartial("Greet", item);
+     
+        @Html.ActionLink("Edit", "Edit", "Student", new {Id=item.Id})<span>|</span>
+        @Html.ActionLink("Details", "Details", "Student", new { Id = item.Id }) <span>|</span>
+        @Html.ActionLink("Delete", "Delete", "Student", new { Id = item.Id }) <span>|</span>
     }
 </ul>
 
