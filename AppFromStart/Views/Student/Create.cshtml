@@ -42,7 +42,7 @@
                     @Html.DropDownList("Status", statusList.GetList())
                 </div>
                 <div>
-                    <input type="submit" value="Create" />ht
+                    <input type="submit" id="btnCreate" value="Create" />ht
                 </div>
                 <script>
                     //function checkName() {
@@ -55,7 +55,8 @@
                     $(document).ready(function () {
                         $("#sname").blur(function () {
                             if ($(this).val() == "") {
-                                $(this).addClass("myStyle");
+                                $("#btnCreate").addClass("btn");
+                                $("#btnCreate").addClass("btn-danger");
                                 }
                             });
                     })

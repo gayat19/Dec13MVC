@@ -1,0 +1,33 @@
+﻿$myfontcolor:purple;
+$underlineColor:red;
+@mixin user-error($ucolor) {
+    font-size: 2em;
+    @if($ucolor == error) {
+        color: red;
+    }
+    @else{
+        color:orange;
+    }
+}
+
+.check{
+    color:$myfontcolor;
+    span{
+        text-decoration:underline;
+        text-decoration-color:$underlineColor;
+    }
+}
+
+h1{
+    color:$myfontcolor;
+}
+
+div {
+    @include user-error(error);
+    background-color:antiquewhite;
+}
+
+p {
+    @include user-error(warning);
+    background-color: antiquewhite;
+}

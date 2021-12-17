@@ -32,10 +32,13 @@ namespace AppFromStart
             {
                 opts.UseSqlServer(Configuration["ConnectionStrings:conSchool"]);
             });
-           services.AddMvc();
+            services.AddRazorPages();
+            services.AddControllersWithViews();
             services.AddScoped<IRepo<Student>, StudentRepoEF>();
             services.AddScoped<IListify, StatusList>();
             services.AddSingleton(typeof(DummyService));
+            services.AddMemoryCache();
+            services.AddSession(options => options.IdleTimeout = TimeSpan.FromMinutes(1));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,12 +54,23 @@ namespace AppFromStart
                 msg += "Production mode is on. Be careful";
             
             app.UseRouting();
-            //app.UseDefaultFiles();
+            app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseResponseCaching();
+            app.Use(async (ctx, next) =>
+            {
+                ctx.Response.GetTypedHeaders().CacheControl = new Microsoft.Net.Http.Headers.CacheControlHeaderValue()
+                {
+                    Public = true
+
+                };
+                await next();
+            });
+            app.UseSession();
             //app.UseStaticFiles(new StaticFileOptions
             //{
-            //    FileProvider = new PhysicalFileProvider(Path.Combine(Environment.CurrentDirectory, "MyFiles")),
-            //    RequestPath = "/MyFiles"
+            //    FileProvider = new PhysicalFileProvider(Path.Combine(Environment.CurrentDirectory, "node_modules")),
+            //    RequestPath = "/node_modules"
             //});
             //app.Use(async (context, next) =>
             //{
@@ -78,7 +92,10 @@ namespace AppFromStart
                 //{
                 //    await context.Response.WriteAsync(msg);
                 //});
-                endpoints.MapControllerRoute("default", pattern: "{controller=Student}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Student}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
 
 

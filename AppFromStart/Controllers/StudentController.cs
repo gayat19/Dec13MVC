@@ -51,12 +51,12 @@ namespace AppFromStart.Controllers
         //}
         public IActionResult Create(Student student)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 _repo.Add(student);
                 return RedirectToAction("Index");
-            }
-            return View();
+            //}
+            //return View();
         }
 
         public IActionResult Edit(int Id)

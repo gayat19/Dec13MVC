@@ -8,11 +8,15 @@ namespace AppFromStart.Models
 {
     public class SchoolContext : DbContext
     {
+        public SchoolContext()
+        {
+
+        }
         public SchoolContext(DbContextOptions options):base(options)
         {
 
         }
-        public DbSet<Student> Students { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
         public DbSet<Course> Courses { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

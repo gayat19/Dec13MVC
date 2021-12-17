@@ -1,0 +1,23 @@
+{
+  "name": "appfromstart",
+  "version": "1.0.0",
+  "description": "SampleApp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bootstrap": "4.1.0",
+    "jquery": "3.3.0",
+    "popper": "1.0.1"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.1",
+    "sass": "^1.45.0",
+    "gulp-concat": "2.6.1",
+    "gulp-cssmin": "0.2.0"
+  },
+  "author": "G3",
+  "license": "ISC"
+}

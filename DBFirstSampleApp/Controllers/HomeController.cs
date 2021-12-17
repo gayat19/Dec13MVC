@@ -25,6 +25,16 @@ namespace DBFirstSampleApp.Controllers
 
         public IActionResult Privacy()
         {
+            try
+            {
+                int num = 0;
+                int res = 100 / num;
+            }
+            catch (Exception e)
+            {
+                _logger.LogError("Check " + e.Message + " " + DateTime.Now);
+                throw;
+            }
             return View();
         }
 

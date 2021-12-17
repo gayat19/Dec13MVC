@@ -1,0 +1,18 @@
+.check {
+  color: purple; }
+  .check span {
+    text-decoration: underline;
+    text-decoration-color: red; }
+
+h1 {
+  color: purple; }
+
+div {
+  font-size: 2em;
+  color: red;
+  background-color: antiquewhite; }
+
+p {
+  font-size: 2em;
+  color: orange;
+  background-color: antiquewhite; }

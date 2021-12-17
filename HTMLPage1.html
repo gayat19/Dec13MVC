@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url: "http://localhost:45524/api/Student",
+                type: "GET"
+            }).done(function (responseText) {
+                $("#myDiv").text(console.log(responseText));
+            }).fail(function () {
+                alert("An error has occurred");
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <div id="myDiv">
+
+    </div>
+</body>
+</html>

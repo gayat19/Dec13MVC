@@ -2,10 +2,14 @@
 <head>
     <title>MyApplication - ViewData["Title"]</title>
     <link href="~/styles/layout.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    @*<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>*@
+    <script src="~/node_modules/jquery/dist/jquery.js"></script>
+    <script src="~/node_modules/popper.js/dist/popper.js"></script>
+    <link href="~/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     @Html.ActionLink("Home", "ChangesName", "Home") | @Html.ActionLink("Student List", "Index", "Student")
+    @Html.Partial("_LoginPartial")
     <hr />
     <h1>Another Layout</h1>
     @RenderBody()
